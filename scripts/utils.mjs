@@ -22,10 +22,11 @@ export const setupModule = async (path) => {
     console.log(`setupModule [${path}] done.`);
 };
 
-export const buildModule = async (module, profile) => {
-    console.log(`buildModule [module - ${module}, profile - ${profile}] start.`);
-    await execTask(`pnpm run build:${module}:${profile}`);
-    console.log(`buildModule [module - ${module}, profile - ${profile}] done.`);
+export const buildModule = async (path, profile) => {
+    console.log(`buildModule [${path}] start.`);
+    chdir(path);
+    await execTask(`pnpm run build:${profile}`);
+    console.log(`buildModule [${path}] done.`);
 };
 
 export const updateModule = async (path) => {
